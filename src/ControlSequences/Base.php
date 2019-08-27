@@ -61,19 +61,17 @@ class Base
      */
     public function get()
     {
-        $toReturn = '';
-
         // Append CSI
         $toReturn = $this->controlSequenceIntroducer->get().'[';
 
         // Append Parameter Byte (if any)
-        if (isset($this->parameterBytes) && sizeof((array) $this->parameterBytes) > 0) {
-            $toReturn .= implode($this->parameterBytes, ';');
+        if (isset($this->parameterBytes) && count((array) $this->parameterBytes) > 0) {
+            $toReturn .= implode(';', $this->parameterBytes);
         }
 
         // Append Intermediate Bytes (if any)
-        if (isset($this->intermediateBytes) && sizeof((array) $this->intermediateBytes) > 0) {
-            $toReturn .= implode($this->intermediateBytes, ';'); // @TODO: Verify that ';' is the glue for intermediate bytes
+        if (isset($this->intermediateBytes) && count((array) $this->intermediateBytes) > 0) {
+            $toReturn .= implode(';', $this->intermediateBytes); // @TODO: Verify that ';' is the glue for intermediate bytes
         }
 
         // Append Final Byte (if any)

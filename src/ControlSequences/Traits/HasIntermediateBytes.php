@@ -45,8 +45,8 @@ trait HasIntermediateBytes
     {
         if ($asString === true) {
             return implode($this->intermediateBytes);
-        } else {
-            return $this->intermediateBytes;
         }
+
+        return $this->intermediateBytes;
     }
 }
